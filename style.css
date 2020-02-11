@@ -1,30 +1,38 @@
 body {
-    height: 100%;
     width: 100%;
     background-image: url('img/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    position: relative;
 }
 
 .content-wrapper{
     width: 100%;
     margin-top: 26px;
+    padding-left: 90px;
+    padding-right: 90px;
 }
 
 .content-inside{
-    width: 83%;
+    width: 88%;
     margin: 0 auto;
     background-color: white;
 }
 
 .header-container{
-    padding-left: 90px;
-    padding-top: 60px;
-    padding-right: 90px;
+    padding: 60px 60px 0px 60px;
+}
+
+.stellingContainer{
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 .img-container{
     width: 300px;
+    display: block;
+    cursor: pointer;
 }
 
 .title{
@@ -55,12 +63,87 @@ body {
     display: table-cell;
     vertical-align: middle;
     padding-left: 20px;
-    padding-right: 48%;
+    padding-right: 42%;
 }
 
 .navContainer{
-    width: 80%;
 }
 
-.btnContainer{
+.btn{
+   float: right;
+   margin-right: 60px;
+   width: 180px;
+   height: 60px;
+   margin-top: 50px;
+}
+
+.trackerContainer{
+    padding: 60px;
+}
+
+.trackerTitle{
+    text-decoration: none;
+}
+
+.trackerTitle:hover{
+    text-decoration: underline;
+}
+
+.partijContainer{
+    background-color: rgb(1, 180, 220);
+    padding-left: 170px;
+    padding-right: 170px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.eenVandaagImg{
+    width: 200px;
+}
+
+.partij{
+    background-color: white;
+    border-radius: 50%;
+    display: block;
+    padding: 2px;
+    width: 50px;
+    float: left;
+    margin-left: 16px;
+    margin-top: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.partij:hover{
+    box-shadow: rgba(0,0,0,0.8) 0 0 5px;
+    transform: scale(1.8);
+    cursor: pointer;
+}
+
+.imgFormat{
+    width: 45px;
+}
+
+.geenPartij{
+    margin-top: 170px;
+}
+
+footer{
+    position: absolute;
+    margin-top: 30px;
+    width: 76%;
+    padding-bottom: 20px;
+}
+
+.leftCont{
+    float: left;
+}
+
+.rightCont{
+    float: right;
+}
+
+.footerImg{
+    width: 160px;
 }
