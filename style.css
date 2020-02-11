@@ -14,4 +14,53 @@ body {
 .content-inside{
     width: 83%;
     margin: 0 auto;
+    background-color: white;
+}
+
+.header-container{
+    padding-left: 90px;
+    padding-top: 60px;
+    padding-right: 90px;
+}
+
+.img-container{
+    width: 300px;
+}
+
+.title{
+    margin: 0px;
+    font-weight: bold;
+}
+
+.subTitle{
+    font-weight: bold;
+    color: rgb(1, 180, 220)
+}
+
+.stellingImg{
+    width: 50px;
+    float: left;
+}
+
+.linkContainer{
+    cursor: pointer;
+}
+
+.rowContainer{
+    display: table;
+    margin-top: 50px;
+}
+
+.anchorText{
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-right: 48%;
+}
+
+.navContainer{
+    width: 80%;
+}
+
+.btnContainer{
 }
