@@ -1,0 +1,17 @@
+body {
+    height: 100%;
+    width: 100%;
+    background-image: url('img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content-wrapper{
+    width: 100%;
+    margin-top: 26px;
+}
+
+.content-inside{
+    width: 83%;
+    margin: 0 auto;
+}
