@@ -75,7 +75,6 @@ body {
    width: 180px;
    height: 60px;
    margin-top: 50px;
-   line-height: 45px;
 }
 
 .trackerContainer{
@@ -150,7 +149,19 @@ footer{
 }
 
 /* Stelling style */
+.stellingPage{
+    display: none;
+}
+.navigationBack{
+    margin-top: 15px;
+}
 
 .iconBack{
-    border-radius: 20%;
+    border-radius: 50%;
+}
+
+.stellingSection{
+    padding-left: 110px;
+    padding-right: 110px;
+    padding-top: 20px;
 }

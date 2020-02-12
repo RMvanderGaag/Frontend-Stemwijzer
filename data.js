@@ -3729,3 +3729,12 @@ var parties = [{
   }
 
 ];
+
+document.getElementById('stellingTitle').innerHTML = subjects[i].title;
+document.getElementById('stellingDes').innerHTML = subjects[i].statement;
+
+function nextStatement(){
+  i = i + 1;
+  document.getElementById('stellingTitle').innerHTML = subjects[i].title;
+  document.getElementById('stellingDes').innerHTML = subjects[i].statement;
+}
