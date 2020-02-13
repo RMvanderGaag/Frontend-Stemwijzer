@@ -118,6 +118,10 @@ var subjects = [{
       }
     ]
   },
+  
+  
+  
+  
   {
     "title": "Maatschappelijke dienstplicht",
     "statement": "Er moet een maatschappelijke dienstplicht voor jongeren komen. Zij kunnen dan dienen in het leger, bij de politie of in de zorg.",
@@ -3729,12 +3733,3 @@ var parties = [{
   }
 
 ];
-
-document.getElementById('stellingTitle').innerHTML = subjects[i].title;
-document.getElementById('stellingDes').innerHTML = subjects[i].statement;
-
-function nextStatement(){
-  i = i + 1;
-  document.getElementById('stellingTitle').innerHTML = subjects[i].title;
-  document.getElementById('stellingDes').innerHTML = subjects[i].statement;
-}

@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <title>StemWijzer Tweede Kamer 2017</title>
 </head>
@@ -11,7 +12,6 @@
     <div class="w3-container content-wrapper">
         <div class=" content-inside">
             <div id='homePage'>
-                <button class='klik'>klik</button>
                 <header class="w3-container header-container">
                     <a class="img-container">
                         <img class="titleImg" src="img/logo-stemwijzer.svg" alt="">
@@ -164,8 +164,7 @@
             </div>
          </div>
          <div id="stellingPage" class="stellingPage">
-            <div class="progressBar">
-
+            <div id="progress" class="progressBar">
             </div>
             <div class="navigationBack w3-padding">
                 <button onclick="goBack()" class="w3-light-grey w3-padding iconBack">
@@ -173,16 +172,38 @@
                 </button>
             </div>
             <section class="stellingSection">
-                <h4 id="stellingTitle"></h4>
-                <p id="stellingDes"></p>
-                <a href="">
-                    <img src="" alt=""> 
-                    <p>Wat vinden de partijen?</p>
-                </a>
-                <div>
+                <div class="opinionContainer">
+                    <h4 id="stellingTitle"></h4>
+                    <p id="stellingDes"></p>
+                </div>
+                <div class="w3-left">
                     <button onclick="nextStatement()">Eens</button>
                     <button onclick="nextStatement()">Geen van beide</button>
                     <button onclick="nextStatement()">Oneens</button>
+                </div>
+                <a id="noOpinion" class="hoverEffect w3-text-grey w3-right">Sla deze vraag over <i class="fa fa-arrow-right"></i></a>
+                <div id="opinionContainer" class="w3-round w3-container">
+                    <a id='showPartyOpinion' class="hoverEffect w3-padding">
+                        <img src="" alt=""> 
+                        <p id='partyOpinionTitle'>Wat vinden de partijen?</p>
+                    </a>
+                    <div id='partyOpinion' class="w3-row w3-center ">
+                        <div class="w3-col s4">
+                            <p class="opinions"><b>Eens</b></p>
+                            <div id='eens'>
+                            </div>
+                        </div>
+                        <div class="w3-col s4">
+                            <p class="opinions"><b>Geen van beide</b></p>
+                            <div id='none'>
+                            </div>
+                        </div>
+                        <div class="w3-col s4">
+                            <p class="opinions"><b>Oneens</b></p>
+                            <div id='oneens'>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
          </div>
@@ -196,7 +217,7 @@
             </div>
         </footer>
     </div>
-    <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

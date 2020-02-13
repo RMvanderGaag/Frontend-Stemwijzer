@@ -66,8 +66,6 @@ body {
     padding-right: 42%;
 }
 
-.navContainer{
-}
 
 .btn{
    float: right;
@@ -156,6 +154,12 @@ footer{
     margin-top: 15px;
 }
 
+.progressBar{
+    overflow: none;
+    width: 3.33%;
+    border-top: 8px solid rgb(1, 180, 220);
+}
+
 .iconBack{
     border-radius: 50%;
 }
@@ -164,4 +168,30 @@ footer{
     padding-left: 110px;
     padding-right: 110px;
     padding-top: 20px;
+}
+
+.opinionContainer{
+    height: 140px;
+}
+
+.hoverEffect:hover{
+    cursor: pointer
+}
+
+#partyOpinion{
+    display: none;
+}
+
+.opinions{
+    text-align: left;
+    border-bottom: 2px solid black;
+    width: 85%;
+}
+
+#partyOpinionTitle{
+    margin: 0px;
+}
+
+#opinionContainer{
+    margin-top: 50px;
 }
