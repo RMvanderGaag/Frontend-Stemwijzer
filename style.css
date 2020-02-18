@@ -1,216 +1,214 @@
 body {
-    width: 100%;
-    background-image: url('img/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    position: relative;
+  width: 100%;
+  background-image: url("img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
 }
 
-.content-wrapper{
-    width: 100%;
-    margin-top: 26px;
-    padding-left: 90px;
-    padding-right: 90px;
+.content-wrapper {
+  width: 100%;
+  margin-top: 26px;
+  padding-left: 90px;
+  padding-right: 90px;
 }
 
-.content-inside{
-    width: 88%;
-    margin: 0 auto;
-    background-color: white;
+.content-inside {
+  width: 88%;
+  margin: 0 auto;
+  background-color: white;
 }
 
-.header-container{
-    padding: 60px 60px 0px 60px;
+.header-container {
+  padding: 60px 60px 0px 60px;
 }
 
-.stellingContainer{
-    padding-left: 60px;
-    padding-right: 60px;
+.stellingContainer {
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
-.img-container{
-    width: 300px;
-    display: block;
-    cursor: pointer;
+.img-container {
+  width: 300px;
+  display: block;
+  cursor: pointer;
 }
 
-.title{
-    margin: 0px;
-    font-weight: bold;
+.title {
+  margin: 0px;
+  font-weight: bold;
 }
 
-.subTitle{
-    font-weight: bold;
-    color: rgb(1, 180, 220)
+.subTitle {
+  font-weight: bold;
+  color: rgb(1, 180, 220);
 }
 
-.stellingImg{
-    width: 50px;
-    float: left;
+.stellingImg {
+  width: 50px;
+  float: left;
 }
 
-.linkContainer{
-    cursor: pointer;
+.linkContainer {
+  cursor: pointer;
 }
 
-.rowContainer{
-    display: table;
-    margin-top: 50px;
+.rowContainer {
+  display: table;
+  margin-top: 50px;
 }
 
-.anchorText{
-    display: table-cell;
-    vertical-align: middle;
-    padding-left: 20px;
-    padding-right: 42%;
+.anchorText {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 20px;
+  padding-right: 42%;
 }
 
-
-.btn{
-   float: right;
-   margin-right: 60px;
-   width: 180px;
-   height: 60px;
-   margin-top: 50px;
+.btn {
+  float: right;
+  margin-right: 60px;
+  width: 180px;
+  height: 60px;
+  margin-top: 50px;
 }
 
-.trackerContainer{
-    padding: 60px;
+.trackerContainer {
+  padding: 60px;
 }
 
-.trackerTitle{
-    text-decoration: none;
+.trackerTitle {
+  text-decoration: none;
 }
 
-.trackerTitle:hover{
-    text-decoration: underline;
+.trackerTitle:hover {
+  text-decoration: underline;
 }
 
-.partijContainer{
-    background-color: rgb(1, 180, 220);
-    padding-left: 170px;
-    padding-right: 170px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+.partijContainer {
+  background-color: rgb(1, 180, 220);
+  padding-left: 170px;
+  padding-right: 170px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.eenVandaagImg{
-    width: 200px;
+.eenVandaagImg {
+  width: 200px;
 }
 
-.partij{
-    background-color: white;
-    border-radius: 50%;
-    display: block;
-    padding: 2px;
-    width: 50px;
-    float: left;
-    margin-left: 16px;
-    margin-top: 10px;
-    overflow: hidden;
-    text-align: center;
-    transition: 0.2s;
+.partij {
+  background-color: white;
+  border-radius: 50%;
+  display: block;
+  padding: 2px;
+  width: 50px;
+  float: left;
+  margin-left: 16px;
+  margin-top: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: 0.2s;
 }
 
-.partij:hover{
-    box-shadow: rgba(0,0,0,0.8) 0 0 5px;
-    transform: scale(1.8);
-    cursor: pointer;
+.partij:hover {
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 5px;
+  transform: scale(1.8);
+  cursor: pointer;
 }
 
-.imgFormat{
-    width: 45px;
+.imgFormat {
+  width: 45px;
 }
 
-.geenPartij{
-    margin-top: 170px;
+.geenPartij {
+  margin-top: 170px;
 }
 
-footer{
-    position: absolute;
-    margin-top: 30px;
-    width: 76%;
-    padding-bottom: 20px;
+footer {
+  position: absolute;
+  margin-top: 30px;
+  width: 76%;
+  padding-bottom: 20px;
 }
 
-.leftCont{
-    float: left;
+.leftCont {
+  float: left;
 }
 
-.rightCont{
-    float: right;
+.rightCont {
+  float: right;
 }
 
-.footerImg{
-    width: 160px;
+.footerImg {
+  width: 160px;
 }
 
 /* Stelling style */
-.stellingPage{
-    display: none;
+.stellingPage {
+  display: none;
 }
-.navigationBack{
-    margin-top: 15px;
-}
-
-.progressBar{
-    overflow: none;
-    width: 3.33%;
-    border-top: 8px solid rgb(1, 180, 220);
+.navigationBack {
+  margin-top: 15px;
 }
 
-.iconBack{
-    border-radius: 50%;
+.progressBar {
+  overflow: none;
+  width: 3.33%;
+  border-top: 8px solid rgb(1, 180, 220);
 }
 
-.stellingSection{
-    padding-left: 110px;
-    padding-right: 110px;
-    padding-top: 20px;
+.iconBack {
+  border-radius: 50%;
 }
 
-.opinionContainer{
-    height: 140px;
+.stellingSection {
+  padding-left: 110px;
+  padding-right: 110px;
+  padding-top: 20px;
 }
 
-.hoverEffect:hover{
-    cursor: pointer
+.opinionContainer {
+  height: 140px;
 }
 
-#partyOpinion{
-    display: none;
+.hoverEffect:hover {
+  cursor: pointer;
 }
 
-.opinions{
-    text-align: left;
-    border-bottom: 2px solid black;
-    width: 85%;
+#partyOpinion {
+  display: none;
 }
 
-#partyOpinionTitle{
-    margin: 0px;
+.opinions {
+  text-align: left;
+  border-bottom: 2px solid black;
+  width: 85%;
 }
 
-#opinionContainer{
-    margin-top: 50px;
+#partyOpinionTitle {
+  margin: 0px;
 }
 
-.opinion{
-    border-bottom: 1px solid black;
-    width: 85%;
-    padding-bottom: 16px;
+#opinionContainer {
+  margin-top: 50px;
+}
+
+.opinion {
+  border-bottom: 1px solid black;
+  width: 85%;
+  padding-bottom: 16px;
 }
 
 .description {
-    font-size: 12px;
-
+  font-size: 12px;
 }
 
-.dropBtn:hover{
-    cursor: pointer;
+.dropBtn:hover {
+  cursor: pointer;
 }
 
-.importantContainer{
-    display: none;
+.importantContainer {
+  display: none;
 }
