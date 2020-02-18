@@ -1,9 +1,20 @@
 var i = 0;
 var a = 3.33;
-var partyOpinion = document.getElementById('partyOpinion')
+var position = ['pro', 'none', 'contra'];
+var data = [];
+
+var partyOpinion = document.getElementById('partyOpinion');
 var opinionContainer = document.getElementById('opinionContainer');
 var stellingTitle = document.getElementById('stellingTitle');
 var stellingDes = document.getElementById('stellingDes');
+
+stellingTitle.innerHTML = subjects[i].title;
+stellingDes.innerHTML = subjects[i].statement;
+
+subjects.forEach(e => {
+    e.myOpinion = "";
+    e.important = false;
+})
 
 document.getElementById('noOpinion').addEventListener('click', function(){
     nextStatement();
@@ -20,11 +31,11 @@ document.getElementById('showPartyOpinion').addEventListener('click', function()
         opinionContainer.style.border = '0px';
     }
     getPartyOpinions();
+});
+
+document.getElementById('important').addEventListener('change', function() {
+    subjects[i].important = this.checked;
 })
-
-
-stellingTitle.innerHTML = subjects[i].title;
-stellingDes.innerHTML = subjects[i].statement;
 
 
 function next(){
@@ -44,32 +55,55 @@ function goBack(){
 }
 
 
-function nextStatement(){
+function nextStatement(opinion){
     i = i + 1;
     if(i == 29){
         a = 100;
-    }else{
+    }else if(i == 30){
+        important();
+    }
+    else{
         a = a + 3.33;
     }
+    
+    document.getElementById('important').checked = false;
+    subjects[i].myOpinion = opinion;
     routineFunction();
 }
 
 function getPartyOpinions() {
-    for(var j = 0; j < subjects[i].parties.length; j++){
-        if(subjects[i].parties[j].position == 'pro'){
-            var elm = document.createElement('p');
-            elm.innerHTML = subjects[i].parties[j].name;
-            document.getElementById('eens').appendChild(elm);
-        }
-        if(subjects[i].parties[j].position == 'none'){
-            var elm = document.createElement('p');
-            elm.innerHTML = subjects[i].parties[j].name;
-            document.getElementById('none').appendChild(elm);
-        }
-        if(subjects[i].parties[j].position == 'contra'){
-            var elm = document.createElement('p');
-            elm.innerHTML = subjects[i].parties[j].name;
-            document.getElementById('oneens').appendChild(elm);
+    for(var k = 0; k < position.length; k++){
+        for(var j = 0; j < subjects[i].parties.length; j++){
+            if(subjects[i].parties[j].position == position[k]){
+                var container = document.createElement('div');
+
+                var elm = document.createElement('p');
+                elm.innerHTML = subjects[i].parties[j].name;
+
+                var des = document.createElement('p');
+                des.innerHTML = subjects[i].parties[j].opinion;
+                des.style.display = 'none';
+                des.className = 'description';
+
+                var dropDown = document.createElement('span');
+                dropDown.innerHTML = '+';
+                dropDown.className = 'w3-right dropBtn';
+                dropDown.addEventListener('click', function(){
+                    if(this.nextSibling.nextSibling.style.display == 'none'){
+                        this.nextSibling.nextSibling.style.display = 'block';
+                    }else{
+                        this.nextSibling.nextSibling.style.display = 'none';
+                    }
+                });
+                
+                container.className = 'opinion';
+
+                container.appendChild(dropDown);
+                container.appendChild(elm);
+                container.appendChild(des);
+
+                document.getElementById(position[k]).appendChild(container);
+            }
         }
     }
 }
@@ -77,9 +111,21 @@ function getPartyOpinions() {
 function routineFunction(){
     stellingTitle.innerHTML = subjects[i].title;
     stellingDes.innerHTML = subjects[i].statement;
+
+
     document.getElementById('progress').style.width = (a.toString())+'%';
     partyOpinion.style.display = 'none';
     opinionContainer.style.backgroundColor = '#ffffff';
     opinionContainer.style.border = '0px';
+
+    document.getElementById('pro').innerHTML = '';
+    document.getElementById('none').innerHTML = '';
+    document.getElementById('contra').innerHTML = '';
+}
+
+function important(){
+    subjects.forEach(e => {
+        console.log(e);
+    })
 }
 

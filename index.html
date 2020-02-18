@@ -177,11 +177,16 @@
                     <p id="stellingDes"></p>
                 </div>
                 <div class="w3-left">
-                    <button onclick="nextStatement()">Eens</button>
-                    <button onclick="nextStatement()">Geen van beide</button>
-                    <button onclick="nextStatement()">Oneens</button>
+                    <button onclick="nextStatement('pro')">Eens</button>
+                    <button onclick="nextStatement('none')">Geen van beide</button>
+                    <button onclick="nextStatement('contra')">Oneens</button>
                 </div>
+               
                 <a id="noOpinion" class="hoverEffect w3-text-grey w3-right">Sla deze vraag over <i class="fa fa-arrow-right"></i></a>
+                <div>
+                    <p>Laat dit ondewerp zwaarder meetellen</p>
+                    <input id="important" type="checkbox">
+                </div>
                 <div id="opinionContainer" class="w3-round w3-container">
                     <a id='showPartyOpinion' class="hoverEffect w3-padding">
                         <img src="" alt=""> 
@@ -190,23 +195,34 @@
                     <div id='partyOpinion' class="w3-row w3-center ">
                         <div class="w3-col s4">
                             <p class="opinions"><b>Eens</b></p>
-                            <div id='eens'>
-                            </div>
+                            <div class="w3-left-align" id='pro'></div>
+                            <div id="eensPartijen"></div>
                         </div>
                         <div class="w3-col s4">
                             <p class="opinions"><b>Geen van beide</b></p>
-                            <div id='none'>
-                            </div>
+                            <div class="w3-left-align" id='none'></div>
+                            <div id="geenMeningPartijen"></div>
                         </div>
                         <div class="w3-col s4">
                             <p class="opinions"><b>Oneens</b></p>
-                            <div id='oneens'>
-                            </div>
+                            <div class="w3-left-align" id='contra'></div>
+                            <div id="oneensPartijen"></div>
                         </div>
                     </div>
                 </div>
             </section>
          </div>
+         <section id="importantContainer" class="importantContainer">
+             <h3>Zijn er onderwerpen die u extra belangrijk vindt?</h3>
+             <p>Aangevinkte stellingen tellen extra mee bij het berekenen van het resulaat.</p>
+             <button>Ga verder</button>
+             <div id="importantSubjects">
+                <h4>Extra belangrijke onderwerpen</h4>
+                <div id="allSubjects">
+
+                </div>
+             </div>
+         </section>
         <footer>
             <div class="leftCont">
                 <a href=""><img class="footerImg" src="img/logo-stemwijzer-white.png" alt=""></a>
