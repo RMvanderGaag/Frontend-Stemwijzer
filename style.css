@@ -155,7 +155,6 @@ footer {
 
 .progressBar {
   overflow: none;
-  width: 3.33%;
   border-top: 8px solid rgb(1, 180, 220);
 }
 
@@ -211,4 +210,14 @@ footer {
 
 .importantContainer {
   display: none;
+  padding: 60px;
+}
+
+.checkboxInput{
+    float: left;
+    height: 22px;
+}
+
+.partyCheckbox{
+    margin-left: 18px;
 }

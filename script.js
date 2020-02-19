@@ -1,5 +1,7 @@
 var i = 0;
-var a = 3.33;
+var a = 100 / subjects.length;
+const plusWith = 100 / subjects.length
+
 var position = ["pro", "none", "contra"];
 var data = [];
 
@@ -7,6 +9,8 @@ var partyOpinion = document.getElementById("partyOpinion");
 var opinionContainer = document.getElementById("opinionContainer");
 var stellingTitle = document.getElementById("stellingTitle");
 var stellingDes = document.getElementById("stellingDes");
+
+document.getElementById('progress').style.width = plusWith;
 
 stellingTitle.innerHTML = subjects[i].title;
 stellingDes.innerHTML = subjects[i].statement;
@@ -53,19 +57,19 @@ function goBack() {
     document.getElementById("stellingPage").style.display = "none";
   } else {
     i = i - 1;
-    a = a - 3.33;
+    a = a - plusWith;
     routineFunction();
   }
 }
 
 function nextStatement(opinion) {
   i = i + 1;
-  if (i == 29) {
+  if (i == subjects.length - 1) {
     a = 100;
-  } else if (i == 30) {
+  } else if (i == subjects.length) {
     result();
   } else {
-    a = a + 3.33;
+    a = a + plusWith;
   }
 
   document.getElementById("important").checked = false;
@@ -130,9 +134,23 @@ function result() {
   for (var m = 0; m < subjects[0].parties.length; m++) {
     var check = document.createElement("input");
     check.setAttribute("type", "checkbox");
-    var h = document.createElement("h3");
-    h.innerHTML = subjects[0].parties[m].name;
+    check.className = 'checkboxInput'
+    
+    var p = document.createElement("p");
+    p.innerHTML = subjects[0].parties[m].name;
+    p.className = 'partyCheckbox'
+
     document.getElementById("col1").appendChild(check);
-    document.getElementById("col1").appendChild(h);
+    document.getElementById("col1").appendChild(p);
   }
+}
+
+function getCertainParties(){
+  var input = document.getElementsByClassName('checkboxInput');
+    for(var j = 0; j < parties.length; j++){
+        if(parties[j].secular == false){
+          console.log(parties[j]);
+          input[j].checked = true;
+        }
+    }
 }
