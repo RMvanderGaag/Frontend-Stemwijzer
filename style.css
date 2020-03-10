@@ -221,3 +221,18 @@ footer {
 .partyCheckbox{
     margin-left: 18px;
 }
+
+#resultContainer{
+  padding: 60px;
+  display: none;
+  height: 300px;
+}
+
+.placeContainer{
+}
+
+.resultTitle{
+}
+
+.place{
+}

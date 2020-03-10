@@ -10,15 +10,21 @@ var opinionContainer = document.getElementById("opinionContainer");
 var stellingTitle = document.getElementById("stellingTitle");
 var stellingDes = document.getElementById("stellingDes");
 
-document.getElementById('progress').style.width = plusWith;
+document.getElementById("progress").style.width = plusWith.toString() + "%";
 
 stellingTitle.innerHTML = subjects[i].title;
 stellingDes.innerHTML = subjects[i].statement;
 
+console.log(subjects[i]);
 subjects.forEach(e => {
   e.myOpinion = "";
   e.important = false;
 });
+
+parties.forEach(e => {
+  e.points = 0;
+});
+
 
 document.getElementById("noOpinion").addEventListener("click", function() {
   nextStatement();
@@ -58,6 +64,7 @@ function goBack() {
   } else {
     i = i - 1;
     a = a - plusWith;
+    removePoints();
     routineFunction();
   }
 }
@@ -72,8 +79,9 @@ function nextStatement(opinion) {
     a = a + plusWith;
   }
 
+  countPoints(opinion);
+
   document.getElementById("important").checked = false;
-  subjects[i].myOpinion = opinion;
   routineFunction();
 }
 
@@ -114,6 +122,34 @@ function getPartyOpinions() {
   }
 }
 
+function removePoints(){
+  var opinion = subjects[i].myOpinion;
+
+  for(var m = 0; m < parties.length - 1; m++){
+    if(subjects[i].parties[m].position == opinion){
+      parties[m].points -= 1;
+    }
+  }
+  
+}
+
+function countPoints(opinion){
+  var newCount = i;
+  newCount = newCount - 1;
+
+  for(var m = 0; m < parties.length - 1; m++){
+    if(subjects[newCount].parties[m].position == opinion){
+      if(document.getElementById('important').checked == true){
+        parties[m].points += 2;
+      }else{
+        parties[m].points += 1;
+      }
+      console.log(parties);
+    }
+  }
+  subjects[newCount].myOpinion = opinion;
+}
+
 function routineFunction() {
   stellingTitle.innerHTML = subjects[i].title;
   stellingDes.innerHTML = subjects[i].statement;
@@ -149,8 +185,22 @@ function getCertainParties(){
   var input = document.getElementsByClassName('checkboxInput');
     for(var j = 0; j < parties.length; j++){
         if(parties[j].secular == false){
-          console.log(parties[j]);
           input[j].checked = true;
         }
     }
+}
+
+function finalResults(){
+  console.log(parties)
+  document.getElementById('importantContainer').style.display = 'none';
+  document.getElementById('resultContainer').style.display = 'block';
+
+  parties.sort(function(a,b){
+    return b.points - a.points;
+  });
+
+  document.getElementById('1stPlace').innerHTML += parties[0].name + ' ' + Math.floor(100 / subjects.length * parties[0].points) + '%';
+  document.getElementById('2ndPlace').innerHTML += parties[1].name + ' ' + Math.floor(100 / subjects.length * parties[1].points) + '%';
+  document.getElementById('3thPlace').innerHTML += parties[2].name + ' ' + Math.floor(100 / subjects.length * parties[2].points) + '%';
+
 }
