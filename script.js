@@ -1,35 +1,41 @@
+//globale variablen
 var i = 0;
 var a = 100 / subjects.length;
 const plusWith = 100 / subjects.length
 
 var position = ["pro", "none", "contra"];
 var data = [];
+var resultParties = [];
 
 var partyOpinion = document.getElementById("partyOpinion");
 var opinionContainer = document.getElementById("opinionContainer");
 var stellingTitle = document.getElementById("stellingTitle");
 var stellingDes = document.getElementById("stellingDes");
 
+//berkend de progress bar
 document.getElementById("progress").style.width = plusWith.toString() + "%";
 
+//zet de eerste stelling klaar
 stellingTitle.innerHTML = subjects[i].title;
 stellingDes.innerHTML = subjects[i].statement;
 
-console.log(subjects[i]);
+//voegt het je eigen mening toe en de extra meetel variable toe aan het object
 subjects.forEach(e => {
   e.myOpinion = "";
   e.important = false;
 });
 
+//voegt het punten systeem aan het object toe
 parties.forEach(e => {
   e.points = 0;
 });
 
-
+//voegt een eventlistener aan de 'sla deze vraag over' knop
 document.getElementById("noOpinion").addEventListener("click", function() {
   nextStatement();
 });
 
+//laat de meningen van alle partijen zien in een uitklap model
 document
   .getElementById("showPartyOpinion")
   .addEventListener("click", function() {
@@ -48,15 +54,18 @@ document
     getPartyOpinions();
   });
 
+//Slaat de verandering van de important op in het object
 document.getElementById("important").addEventListener("change", function() {
   subjects[i].important = this.checked;
 });
 
+//Gaat naar de stellingen pagina toe
 function next() {
   document.getElementById("homePage").style.display = "none";
   document.getElementById("stellingPage").style.display = "block";
 }
 
+//Gaat terug naar de vorige stelling of als je bij de eerste vraag bent terug naar de homepage
 function goBack() {
   if (i == 0) {
     document.getElementById("homePage").style.display = "block";
@@ -69,6 +78,7 @@ function goBack() {
   }
 }
 
+//Gaat naar de volgende stelling, als je bij de laatste stelling bent word je naar het resultaat gestuurd
 function nextStatement(opinion) {
   i = i + 1;
   if (i == subjects.length - 1) {
@@ -85,6 +95,7 @@ function nextStatement(opinion) {
   routineFunction();
 }
 
+//Laat alle meningen van de andere partijen per stelling zien EXTRA
 function getPartyOpinions() {
   for (var k = 0; k < position.length; k++) {
     for (var j = 0; j < subjects[i].parties.length; j++) {
@@ -122,6 +133,7 @@ function getPartyOpinions() {
   }
 }
 
+//Haalt de punten er van af als je naar de vorige stelling gaat
 function removePoints(){
   var opinion = subjects[i].myOpinion;
 
@@ -133,6 +145,7 @@ function removePoints(){
   
 }
 
+//Voegt punten toe aan het object en kijkt of de stelling belangrijk is of niet in dat geval worden er twee punten bij op getelt
 function countPoints(opinion){
   var newCount = i;
   newCount = newCount - 1;
@@ -144,12 +157,12 @@ function countPoints(opinion){
       }else{
         parties[m].points += 1;
       }
-      console.log(parties);
     }
   }
   subjects[newCount].myOpinion = opinion;
 }
 
+//Dit is een herhalende functie en laat de volgende vraag zien en doet de progressbar verder
 function routineFunction() {
   stellingTitle.innerHTML = subjects[i].title;
   stellingDes.innerHTML = subjects[i].statement;
@@ -164,43 +177,46 @@ function routineFunction() {
   document.getElementById("contra").innerHTML = "";
 }
 
+//Gaat naar de pagina waar je kan kiezen welke pagina je wilt meetellen in het eind resultaat
 function result() {
   document.getElementById("stellingPage").style.display = "none";
   document.getElementById("importantContainer").style.display = "block";
   for (var m = 0; m < subjects[0].parties.length; m++) {
-    var check = document.createElement("input");
-    check.setAttribute("type", "checkbox");
-    check.className = 'checkboxInput'
-    
     var p = document.createElement("p");
     p.innerHTML = subjects[0].parties[m].name;
-    p.className = 'partyCheckbox'
+    p.className = 'partyCheckbox';
 
-    document.getElementById("col1").appendChild(check);
     document.getElementById("col1").appendChild(p);
   }
 }
 
+//Deze functie word aangeroepen als de gebruiken de zittende partijen selecteerd
 function getCertainParties(){
-  var input = document.getElementsByClassName('checkboxInput');
-    for(var j = 0; j < parties.length; j++){
-        if(parties[j].secular == false){
-          input[j].checked = true;
-        }
-    }
+  resultParties = [];
+  resultParties = parties.filter(function(partie) {
+    return partie.secular == true
+  });
 }
 
+//Deze functie word aangeroepen als de gebruiken alle partijen selecteerd
+function getAllParties(){
+  resultParties = parties;
+}
+
+//Bij deze functie worden alle resultaten geladen en de top drie gepakt
 function finalResults(){
-  console.log(parties)
+  if(resultParties.length == 0){
+    resultParties = parties;
+  }
   document.getElementById('importantContainer').style.display = 'none';
   document.getElementById('resultContainer').style.display = 'block';
 
-  parties.sort(function(a,b){
+  resultParties.sort(function(a,b){
     return b.points - a.points;
   });
 
-  document.getElementById('1stPlace').innerHTML += parties[0].name + ' ' + Math.floor(100 / subjects.length * parties[0].points) + '%';
-  document.getElementById('2ndPlace').innerHTML += parties[1].name + ' ' + Math.floor(100 / subjects.length * parties[1].points) + '%';
-  document.getElementById('3thPlace').innerHTML += parties[2].name + ' ' + Math.floor(100 / subjects.length * parties[2].points) + '%';
+  document.getElementById('1stPlace').innerHTML += resultParties[0].name;
+  document.getElementById('2ndPlace').innerHTML += resultParties[1].name;
+  document.getElementById('3thPlace').innerHTML += resultParties[2].name;
 
 }
