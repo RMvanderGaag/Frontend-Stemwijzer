@@ -215,24 +215,17 @@ footer {
 
 .checkboxInput{
     float: left;
-    height: 22px;
+    height: 43px;
 }
 
 .partyCheckbox{
     margin-left: 18px;
+    position: absolute;
+    top: 270px;
 }
 
 #resultContainer{
   padding: 60px;
   display: none;
   height: 300px;
-}
-
-.placeContainer{
-}
-
-.resultTitle{
-}
-
-.place{
 }

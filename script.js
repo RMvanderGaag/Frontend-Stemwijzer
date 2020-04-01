@@ -1,7 +1,8 @@
 //globale variablen
 var i = 0;
 var a = 100 / subjects.length;
-const plusWith = 100 / subjects.length
+const plusWith = 100 / subjects.length;
+const bigParty = 10;
 
 var position = ["pro", "none", "contra"];
 var data = [];
@@ -181,11 +182,14 @@ function routineFunction() {
 function result() {
   document.getElementById("stellingPage").style.display = "none";
   document.getElementById("importantContainer").style.display = "block";
-  for (var m = 0; m < subjects[0].parties.length; m++) {
-    var p = document.createElement("p");
-    p.innerHTML = subjects[0].parties[m].name;
-    p.className = 'partyCheckbox';
+  
+  parties.sort(function(a,b){
+    return b.points - a.points;
+  });
 
+  for (var m = 0; m < parties.length; m++) {
+    var p = document.createElement("p");
+    p.innerHTML = parties[m].name + '<b> ' + parties[m].points + '</b>';
     document.getElementById("col1").appendChild(p);
   }
 }
@@ -194,13 +198,20 @@ function result() {
 function getCertainParties(){
   resultParties = [];
   resultParties = parties.filter(function(partie) {
-    return partie.secular == true
+    return partie.secular == true;
   });
 }
 
 //Deze functie word aangeroepen als de gebruiken alle partijen selecteerd
 function getAllParties(){
   resultParties = parties;
+}
+
+function getBigParties(){
+  resultParties = [];
+  resultParties = parties.filter(function(partie) {
+    return partie.size >= bigParty;
+  })
 }
 
 //Bij deze functie worden alle resultaten geladen en de top drie gepakt
@@ -218,5 +229,4 @@ function finalResults(){
   document.getElementById('1stPlace').innerHTML += resultParties[0].name;
   document.getElementById('2ndPlace').innerHTML += resultParties[1].name;
   document.getElementById('3thPlace').innerHTML += resultParties[2].name;
-
 }
