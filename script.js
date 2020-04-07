@@ -16,6 +16,8 @@ var stellingDes = document.getElementById("stellingDes");
 //berkend de progress bar
 document.getElementById("progress").style.width = plusWith.toString() + "%";
 
+document.getElementById('questionAmount').innerHTML = subjects.length.toString();
+
 //zet de eerste stelling klaar
 stellingTitle.innerHTML = subjects[i].title;
 stellingDes.innerHTML = subjects[i].statement;
