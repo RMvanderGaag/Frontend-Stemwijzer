@@ -23,7 +23,7 @@
                 <section class="w3-container stellingContainer">
                     <div class="navContainer">
                         <h4 class="subTitle">Test uw politieke voorkeur aan de hand van <span id="questionAmount"></span> stellingen</h4>
-                        <button onclick="next()" class="w3-button  w3-hover-cyan w3-round w3-black btn">Start</button>
+                        <button onclick="start()" class="w3-button  w3-hover-cyan w3-round w3-black btn">Start</button>
                         <a class="linkContainer">
                             <div class="w3-row rowContainer">
                                 <img class="w3-cell stellingImg" src="img/icon-xsable.svg" alt="">
@@ -166,7 +166,7 @@
             <div id="progress" class="progressBar">
             </div>
             <div class="navigationBack w3-padding">
-                <button onclick="goBack()" class="w3-light-grey w3-padding iconBack">
+                <button onclick="previousStatement()" class="w3-light-grey w3-padding iconBack">
                     <img src="img/icon-arrow-back.svg" alt="">
                 </button>
             </div>
@@ -176,9 +176,9 @@
                     <p id="stellingDes"></p>
                 </div>
                 <div class="w3-left">
-                    <button onclick="nextStatement('pro')">Eens</button>
-                    <button onclick="nextStatement('none')">Geen van beide</button>
-                    <button onclick="nextStatement('contra')">Oneens</button>
+                    <button id="pro" onclick="getOpinion('pro')">Eens</button>
+                    <button id="none" onclick="getOpinion('none')">Geen van beide</button>
+                    <button id="contra" onclick="getOpinion('contra')">Oneens</button>
                 </div>
                
                 <a id="noOpinion" class="hoverEffect w3-text-grey w3-right">Sla deze vraag over <i class="fa fa-arrow-right"></i></a>
@@ -186,7 +186,7 @@
                     <p class="partyCheckbox">Laat dit ondewerp zwaarder meetellen</p>
                     <input class="checkboxInput" id="important" type="checkbox">                
                 </div>
-                <div id="opinionContainer" class="w3-round w3-container">
+                <!-- <div id="opinionContainer" class="w3-round w3-container">
                     <a id='showPartyOpinion' class="hoverEffect w3-padding">
                         <img src="" alt=""> 
                         <p id='partyOpinionTitle'>Wat vinden de partijen?</p>
@@ -208,7 +208,7 @@
                             <div id="oneensPartijen"></div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </section>
          </div>
          <section id="importantContainer" class="importantContainer">
@@ -259,6 +259,6 @@
     </div>
     <script type="text/javascript" src="http://stemwijzer.dvc-icta.nl/testdata.js"></script>
     <!-- <script type="text/javascript" src="data.js"></script> -->
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script2.js"></script>
 </body>
 </html>
