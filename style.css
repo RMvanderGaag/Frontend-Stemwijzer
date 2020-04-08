@@ -229,3 +229,8 @@ footer {
   display: none;
   height: 300px;
 }
+
+#noOpinion{
+  border: none;
+  background-color: white;
+}

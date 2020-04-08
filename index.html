@@ -181,40 +181,17 @@
                     <button id="contra" onclick="getOpinion('contra')">Oneens</button>
                 </div>
                
-                <a id="noOpinion" class="hoverEffect w3-text-grey w3-right">Sla deze vraag over <i class="fa fa-arrow-right"></i></a>
+                <button id="noOpinion" onclick="nextStatement()" class="hoverEffect w3-text-grey w3-right">Sla deze vraag over <i class="fa fa-arrow-right"></i></button>
                 <div class="w3-container">
                     <p class="partyCheckbox">Laat dit ondewerp zwaarder meetellen</p>
                     <input class="checkboxInput" id="important" type="checkbox">                
                 </div>
-                <!-- <div id="opinionContainer" class="w3-round w3-container">
-                    <a id='showPartyOpinion' class="hoverEffect w3-padding">
-                        <img src="" alt=""> 
-                        <p id='partyOpinionTitle'>Wat vinden de partijen?</p>
-                    </a>
-                    <div id='partyOpinion' class="w3-row w3-center ">
-                        <div class="w3-col s4">
-                            <p class="opinions"><b>Eens</b></p>
-                            <div class="w3-left-align" id='pro'></div>
-                            <div id="eensPartijen"></div>
-                        </div>
-                        <div class="w3-col s4">
-                            <p class="opinions"><b>Geen van beide</b></p>
-                            <div class="w3-left-align" id='none'></div>
-                            <div id="geenMeningPartijen"></div>
-                        </div>
-                        <div class="w3-col s4">
-                            <p class="opinions"><b>Oneens</b></p>
-                            <div class="w3-left-align" id='contra'></div>
-                            <div id="oneensPartijen"></div>
-                        </div>
-                    </div>
-                </div> -->
             </section>
          </div>
          <section id="importantContainer" class="importantContainer">
              <h3>Welke partijen wilt u meenemen in het resultaat?</h3>
              <p>U kunt kiezen voor zittende partijen, die nu in de Tweede Kamer vertegenwoordigd zijn. Daarbij nemen we ook de partijen mee die in de peilingen op minimaal één zetel staan. U kunt alle partijen meenemen en u kunt een eigen selectie maken van tenminste drie partijen.</p>
-             <button onclick="finalResults()">Naar resultaat gaan</button>
+             <button onclick="showResultPage()">Naar resultaat gaan</button>
              <div id="importantSubjects">
                 <h4>Kies de partijen die u mee wilt nemen in het resultaat</h4>
                 <button class="w3-button w3-round" onclick="getCertainParties()">Selecteer zittende partijen</button>
@@ -258,7 +235,6 @@
         </footer>
     </div>
     <script type="text/javascript" src="http://stemwijzer.dvc-icta.nl/testdata.js"></script>
-    <!-- <script type="text/javascript" src="data.js"></script> -->
     <script type="text/javascript" src="script2.js"></script>
 </body>
 </html>
