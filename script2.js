@@ -97,7 +97,7 @@ function showSelectPartiePage(){
     //De partijen worden getoond 
     for (var m = 0; m < parties.length; m++) {
         var p = document.createElement("p");
-        p.innerHTML = parties[m].long + '<b> ' + parties[m].points + '</b>';
+        p.innerHTML = parties[m].long;
         document.getElementById("col1").appendChild(p);
       }
 }
