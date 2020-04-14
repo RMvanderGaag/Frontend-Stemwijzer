@@ -67,20 +67,21 @@ function previousStatement(){
 }
 
 function matchOpinions(){
-    //Er word door de subjects en de partijen geloopt
-    for(var i = 0; i < subjects.length; i++){
-        for(var j = 0; j < parties.length; j++){
-            //Daarna word er gekeen of de mening van de partijen overeenkomt met jou mening
-            if(subjects[i].myOpinion == subjects[i].parties[j].position){
+    // //Er word door de subjects en de partijen geloopd
+    subjects.forEach(subject => {
+        parties.forEach(function(partie, partieIndex){
+             //Daarna word er gekeen of de mening van de partijen overeenkomt met jou mening
+             if(subject.myOpinion == subject.parties[partieIndex].position){
                 //Er word gekeken of de vraag belangrijk is en daarna worden de punten opgeteld 
-                if(subjects[i].weight == false){
-                    parties[j].points += 1;
+                if(subject.weight == false){
+                    partie.points += 1;
                 }else{
-                    parties[j].points += 2;
+                    partie.points += 2;
                 }
             }
-        }
-    }
+        })
+           
+    })
     showSelectPartiePage();
 }
 
@@ -95,11 +96,11 @@ function showSelectPartiePage(){
       });
     
     //De partijen worden getoond 
-    for (var m = 0; m < parties.length; m++) {
-        var p = document.createElement("p");
-        p.innerHTML = parties[m].long;
-        document.getElementById("col1").appendChild(p);
-      }
+    parties.forEach(party => {
+        var par = document.createElement("p");
+        par.innerHTML = party.long;
+        document.getElementById("col1").appendChild(par);
+    });
 }
 
 //Als de gebruiker terug gaat naar een eerder ingevulde vraag word het antwoord wat je daar in hebt gevuld getoond
@@ -123,7 +124,7 @@ function checkStatement(opinion){
 //Deze functie word aangeroepen als de gebruiken de zittende partijen selecteerd
 function getCertainParties(){
     resultParties = [];
-    resultParties = parties.filter(function(partie) {
+    resultParties = parties.filter(partie => {
       return partie.secular == true;
     });
   }
@@ -136,7 +137,7 @@ function getAllParties(){
 //Alleen de grote partijen worden geetoond
 function getBigParties(){
     resultParties = [];
-    resultParties = parties.filter(function(partie) {
+    resultParties = parties.filter(partie => {
       return partie.size >= bigParty;
     })
 }
