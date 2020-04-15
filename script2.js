@@ -14,9 +14,14 @@ subjects.forEach(subject => {
     subject.weight = false;
 });
 
-parties.forEach(partie => {
-    partie.points = 0;
+parties.forEach(party => {
+    party.points = 0;
 });
+
+function displayStatement(nmbr){
+    stellingTitle.innerHTML = (nmbr + 1).toString() + '. ' + subjects[nmbr].title;
+    stellingDes.innerHTML = subjects[nmbr].statement;
+}
 
 function start(){
     //Laad de pagina met de stellingen
@@ -24,8 +29,7 @@ function start(){
     document.getElementById("stellingPage").style.display = "block";
 
     //Zet de eerste vraag klaar
-    stellingTitle.innerHTML = subjects[0].title;
-    stellingDes.innerHTML = subjects[0].statement;
+    displayStatement(statementNumber);
 }
 
 
@@ -44,8 +48,7 @@ function nextStatement(){
         //Nieuwe stelling word geladen
         document.getElementById('important').checked = false;
         statementNumber++;
-        stellingTitle.innerHTML = subjects[statementNumber].title;
-        stellingDes.innerHTML = subjects[statementNumber].statement;
+        displayStatement(statementNumber);
         checkStatement(subjects[statementNumber].myOpinion);
     }else{
         //Na de laatste vraag word er een nieuwe functie aangeroepn
@@ -57,8 +60,7 @@ function nextStatement(){
 function previousStatement(){
     if(statementNumber !== 0){
         statementNumber--;
-        stellingTitle.innerHTML = subjects[statementNumber].title;
-        stellingDes.innerHTML = subjects[statementNumber].statement;
+        displayStatement(statementNumber);
         checkStatement(subjects[statementNumber].myOpinion);
     }else{
         document.getElementById("homePage").style.display = "block";
@@ -67,20 +69,20 @@ function previousStatement(){
 }
 
 function matchOpinions(){
-    // //Er word door de subjects en de partijen geloopd
+    //Er word door de subjects en de partijen geloopd
     subjects.forEach(subject => {
-        parties.forEach(function(partie, partieIndex){
+        parties.forEach(function(party, partyIndex){
              //Daarna word er gekeen of de mening van de partijen overeenkomt met jou mening
-             if(subject.myOpinion == subject.parties[partieIndex].position){
+             if(subject.myOpinion == subject.parties[partyIndex].position){
+                var scoreParty = parties.find(party => party.name == subject.parties[partyIndex].name);
                 //Er word gekeken of de vraag belangrijk is en daarna worden de punten opgeteld 
                 if(subject.weight == false){
-                    partie.points += 1;
+                    scoreParty.points += 1;
                 }else{
-                    partie.points += 2;
+                    scoreParty.points += 2;
                 }
             }
         })
-           
     })
     showSelectPartiePage();
 }
@@ -98,7 +100,7 @@ function showSelectPartiePage(){
     //De partijen worden getoond 
     parties.forEach(party => {
         var par = document.createElement("p");
-        par.innerHTML = party.long;
+        par.innerHTML = party.long + ' ' + party.points;
         document.getElementById("col1").appendChild(par);
     });
 }
@@ -124,8 +126,8 @@ function checkStatement(opinion){
 //Deze functie word aangeroepen als de gebruiken de zittende partijen selecteerd
 function getCertainParties(){
     resultParties = [];
-    resultParties = parties.filter(partie => {
-      return partie.secular == true;
+    resultParties = parties.filter(party => {
+      return party.secular == true;
     });
   }
   
@@ -137,8 +139,8 @@ function getAllParties(){
 //Alleen de grote partijen worden geetoond
 function getBigParties(){
     resultParties = [];
-    resultParties = parties.filter(partie => {
-      return partie.size >= bigParty;
+    resultParties = parties.filter(party => {
+      return party.size >= bigParty;
     })
 }
 
@@ -146,12 +148,12 @@ function getBigParties(){
 function showResultPage(){
     if(resultParties.length == 0){
         resultParties = parties;
-      }
+    }
     document.getElementById('importantContainer').style.display = 'none';
     document.getElementById('resultContainer').style.display = 'block';
 
     //De top 3 partijen worden laten zien
     document.getElementById('1stPlace').innerHTML += resultParties[0].name;
     document.getElementById('2ndPlace').innerHTML += resultParties[1].name;
-    document.getElementById('3thPlace').innerHTML += resultParties[2].name;
+    document.getElementById('3rdPlace').innerHTML += resultParties[2].name;
 }
