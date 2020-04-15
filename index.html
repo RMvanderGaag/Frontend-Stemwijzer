@@ -194,18 +194,12 @@
              <button onclick="showResultPage()">Naar resultaat gaan</button>
              <div id="importantSubjects">
                 <h4>Kies de partijen die u mee wilt nemen in het resultaat</h4>
-                <button class="w3-button w3-round" onclick="getCertainParties()">Selecteer zittende partijen</button>
-                <button class="w3-button w3-round" onclick="getAllParties()">Selecteer alle partijen</button>
-                <button class="w3-button w3-round" onclick="getBigParties()">Selecteer de grote partijen</button>
+                <button id="secular" class="w3-button w3-round filterParty" onclick="getCertainParties()">Selecteer zittende partijen</button>
+                <button id="all" class="w3-button w3-round filterParty" onclick="getAllParties()">Selecteer alle partijen</button>
+                <button id="big" class="w3-button w3-round filterParty" onclick="getBigParties()">Selecteer de grote partijen</button>
                 <div class="w3-row w3-center ">
                     <div class="w3-col s4">
-                        <div class="w3-left-align" id='col1'></div>
-                    </div>
-                    <div class="w3-col s4">
-                        <div class="w3-left-align" id='col2'></div>
-                    </div>
-                    <div class="w3-col s4">
-                        <div class="w3-left-align" id='col3'></div>
+                        <div class="w3-left-align" id='partyOrder'></div>
                     </div>
                 </div>
              </div>
@@ -220,7 +214,7 @@
                     <h3 id="2ndPlace">2. </h3>
                  </div>
                  <div class="place">
-                    <h3 id="3thPlace">3. </h3>
+                    <h3 id="3rdPlace">3. </h3>
                  </div>
              </div>
          </section>

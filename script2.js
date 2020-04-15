@@ -18,11 +18,18 @@ parties.forEach(party => {
     party.points = 0;
 });
 
+/**
+ * Het nummer van de vraag word displayed
+ * @param nmbr het index nummer van de vraag 
+ */
 function displayStatement(nmbr){
     stellingTitle.innerHTML = (nmbr + 1).toString() + '. ' + subjects[nmbr].title;
     stellingDes.innerHTML = subjects[nmbr].statement;
 }
 
+/**
+ * De Pagina met de vragen word geladen
+ */
 function start(){
     //Laad de pagina met de stellingen
     document.getElementById("homePage").style.display = "none";
@@ -32,7 +39,9 @@ function start(){
     displayStatement(statementNumber);
 }
 
-
+/**
+ * @param opinion de keuze die je hebt gemaakt (pro, none, contra)
+ */
 function getOpinion(opinion){
     //De mening word toegevoegd aan de property
     subjects[statementNumber].myOpinion = opinion;
@@ -42,7 +51,9 @@ function getOpinion(opinion){
     nextStatement();
 }
 
-//Nieuwe stelling word geladen, wanneer je bij de laatste vraag is word er een functie aangeroepen.
+/**
+ * Nieuwe stelling word geladen, wanneer je bij de laatste vraag is word er een functie aangeroepen.
+ */
 function nextStatement(){
     if(statementNumber < subjects.length - 1){
         //Nieuwe stelling word geladen
@@ -56,7 +67,9 @@ function nextStatement(){
     }
 }
 
-//Als de gebruiker op het pijltje terug klikt dan word de vorige vraag geladen, als ben je bij de laatste vraag word de home pagina weer getoond
+/**
+ * Als de gebruiker op het pijltje terug klikt dan word de vorige vraag geladen, als ben je bij de laatste vraag word de home pagina weer getoond 
+ */
 function previousStatement(){
     if(statementNumber !== 0){
         statementNumber--;
@@ -68,6 +81,9 @@ function previousStatement(){
     }
 }
 
+/** 
+ *Telt bij de partijen de punten op als de partijen met elkaar overeen komen 
+ */
 function matchOpinions(){
     //Er word door de subjects en de partijen geloopd
     subjects.forEach(subject => {
@@ -87,25 +103,10 @@ function matchOpinions(){
     showSelectPartiePage();
 }
 
-function showSelectPartiePage(){
-    //Nieuwe pagina word geladen
-    document.getElementById("stellingPage").style.display = "none";
-    document.getElementById("importantContainer").style.display = "block";
-
-    //De partijen worden op volgorde gezet met de meeste punten
-    parties.sort(function(a,b){
-        return b.points - a.points;
-      });
-    
-    //De partijen worden getoond 
-    parties.forEach(party => {
-        var par = document.createElement("p");
-        par.innerHTML = party.long + ' ' + party.points;
-        document.getElementById("col1").appendChild(par);
-    });
-}
-
-//Als de gebruiker terug gaat naar een eerder ingevulde vraag word het antwoord wat je daar in hebt gevuld getoond
+/**
+ * Als de gebruiker terug gaat naar een eerder ingevulde vraag word het antwoord wat je daar in hebt gevuld getoond
+ * @param opinion de mening die je hebt ingevoerd
+ */
 function checkStatement(opinion){
     document.getElementById('important').checked = false;
     for(var k = 0; k < position.length; k++){
@@ -123,28 +124,71 @@ function checkStatement(opinion){
     }
 }
 
-//Deze functie word aangeroepen als de gebruiken de zittende partijen selecteerd
+/**
+ * De pagina met een overzicht van de partijen in volgorde van de meeste punten word geladen
+ */
+function showSelectPartiePage(){
+    //Nieuwe pagina word geladen
+    document.getElementById("stellingPage").style.display = "none";
+    document.getElementById("importantContainer").style.display = "block";
+
+    //De partijen worden op volgorde gezet met de meeste punten
+    parties.sort(function(a,b){
+        return b.points - a.points;
+      });
+    
+    //De partijen worden getoond 
+    parties.forEach(party => {
+        var par = document.createElement("p");
+        par.innerHTML = party.long;
+        document.getElementById("partyOrder").appendChild(par);
+    });
+}
+
+/**
+ * Deze functie word aangeroepen als de gebruiken de zittende partijen selecteerd 
+ */
 function getCertainParties(){
+    btnFeedback('secular')
     resultParties = [];
     resultParties = parties.filter(party => {
       return party.secular == true;
     });
   }
   
-//Deze functie word aangeroepen als de gebruiken alle partijen selecteerd
+/** 
+ * Deze functie word aangeroepen als de gebruiken alle partijen selecteerd 
+ */
 function getAllParties(){
+    btnFeedback('all')
     resultParties = parties;
 }
   
-//Alleen de grote partijen worden geetoond
+/** 
+ * Alleen de grote partijen worden geetoond
+ */
 function getBigParties(){
+    btnFeedback('big')
     resultParties = [];
     resultParties = parties.filter(party => {
       return party.size >= bigParty;
     })
 }
 
-//De Resultaat pagina word geladen
+/** 
+ * De kleur van de knop word veranderd al klik je op een van de knoppen
+ * @param partyType de value van de knop 
+ */
+function btnFeedback(partyType){
+    for(var i = 0; i < document.getElementsByClassName('filterParty').length; i++){
+        document.getElementsByClassName('filterParty')[i].style.background = 'white';
+    }
+    document.getElementById(partyType).style.background = 'rgb(1, 180, 220)';
+}
+
+/** 
+ * De Resultaat pagina word geladen 
+ */
 function showResultPage(){
     if(resultParties.length == 0){
         resultParties = parties;
